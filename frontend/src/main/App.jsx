@@ -21,11 +21,9 @@ const App = () => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        // establishes socket connection to server
         const new_socket = io("http://localhost:3001");
         setSocket(new_socket);
         return () => {
-            // disconnects when component unmounts
             new_socket.disconnect();
         };
     }, []);
