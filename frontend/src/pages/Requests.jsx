@@ -24,6 +24,7 @@ const Requests = ({ socket }) => {
             onAccept={handleAccept}
             onDecline={handleDecline}
             emptyMessage="No friend requests found."
+            socket={socket}
         />
     );
 };
