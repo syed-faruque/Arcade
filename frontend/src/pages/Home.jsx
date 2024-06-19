@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: May 20 2024
+**/
+
 import { useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Navbar from "../components/Navbar";
