@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: May 25 2024
+**/
+
 import { useState, useEffect } from "react";
 
 const useFriendStatuses = (username, socket) => {
