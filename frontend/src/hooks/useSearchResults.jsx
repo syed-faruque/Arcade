@@ -21,6 +21,7 @@ const useSearchResults = (username, search, socket) => {
 
         return () => {
             socket.off("update_search");
+            socket.off("search");
         };
     }, [socket, search, username]);
     
