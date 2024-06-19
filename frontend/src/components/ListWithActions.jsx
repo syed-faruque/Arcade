@@ -2,10 +2,10 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import '../prettify/Styles.css';
 
-const ListWithActions = ({ title, items, onAccept, onDecline, emptyMessage }) => {
+const ListWithActions = ({ title, items, onAccept, onDecline, emptyMessage, socket }) => {
     return (
         <div className="min-h-screen bg-gray-100">
-            <Navbar />
+            <Navbar socket = {socket}/>
             <div className="container mx-auto px-4 py-8">
                 <div className="max-w-xl mx-auto bg-white rounded-lg shadow-lg p-6">
                     <h2 className="text-3xl font-semibold mb-4 text-center">{title}</h2>
