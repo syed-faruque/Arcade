@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: June 18 2024
+**/
+
 import { useEffect, useState } from "react";
 
 const useOpponent = (socket) => {
