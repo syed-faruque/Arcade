@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: June 8 2024
+**/
+
 import {useState, useEffect} from "react";
 
 const useSearchResults = (username, search, socket) => {
