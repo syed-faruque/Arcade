@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: June 2 2024
+**/
+
 import {useState, useEffect} from "react";
 
 const useInvitations = (username, socket) => {
