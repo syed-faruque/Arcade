@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: May 20 2024
+**/
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../prettify/Styles.css';
