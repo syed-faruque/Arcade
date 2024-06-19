@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: May 20 2024
+**/
+
 import React, { useEffect, useState } from 'react';
 import AuthForm from '../components/AuthForm';
 import { useNavigate } from 'react-router-dom';
