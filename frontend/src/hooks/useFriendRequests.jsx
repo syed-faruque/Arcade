@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 
 const useFriendRequests = (username, socket) => {
     const [requesters, setRequesters] = useState([]);
-    const username = useAuth(socket);
 
     useEffect(() => {
         if (!socket || !username) return;
