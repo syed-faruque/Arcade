@@ -12,7 +12,6 @@ const useInvitations = (username, socket) => {
         });
 
         return () => {
-            socket.off("invite");
             socket.off("find_invites");
         };
     }, [socket, username]);
