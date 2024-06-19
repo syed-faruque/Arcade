@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: June 2 2024
+**/
+
 import React from "react";
 import Navbar from "../components/Navbar";
 import '../prettify/Styles.css';
