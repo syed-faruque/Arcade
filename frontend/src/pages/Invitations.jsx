@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: June 2 2024
+**/
+
 import ListWithActions from "../components/ListWithActions";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
