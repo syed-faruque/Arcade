@@ -25,6 +25,7 @@ const Invitations = ({ socket }) => {
             onAccept={handleAccept}
             onDecline={handleDecline}
             emptyMessage="No invitations found."
+            socket={socket}
         />
     );
 };
