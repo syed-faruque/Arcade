@@ -1,3 +1,8 @@
+/**
+ * @author Syed Faruque
+ * created: May 25 2024
+**/
+
 import React from "react";
 
 const LobbyList = ({ users, invitedUsers, handleInvite, title }) => {
