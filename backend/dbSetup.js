@@ -9,10 +9,8 @@ require('dotenv').config();
 
 // Database connection
 const connection = sql.createConnection({
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USER,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE_NAME
+    host: process.env.DATABASE_HOST, user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD, database: process.env.DATABASE_NAME
 });
 
 connection.connect(function(err) {
@@ -26,8 +24,7 @@ connection.connect(function(err) {
 // Accounts table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS accounts (
-        username VARCHAR(255),
-        password VARCHAR(255),
+        username VARCHAR(255), password VARCHAR(255), 
         online_status BOOLEAN
     )
 `, function(error, results, fields) {
@@ -39,8 +36,7 @@ connection.query(`
 // Socket_connections table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS socket_connections (
-        username VARCHAR(255),
-        socket_id VARCHAR(255)
+        username VARCHAR(255), socket_id VARCHAR(255)
     )
 `, function(error, results, fields) {
     if (error) {
@@ -51,8 +47,7 @@ connection.query(`
 // Friends table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS friends (
-        user VARCHAR(255),
-        friend VARCHAR(255)
+        user VARCHAR(255), friend VARCHAR(255)
     )
 `, function(error, results, fields) {
     if (error) {
@@ -63,8 +58,7 @@ connection.query(`
 // Invites table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS invites (
-        inviter VARCHAR(255),
-        invited VARCHAR(255),
+        inviter VARCHAR(255), invited VARCHAR(255),
         room_id VARCHAR(255)
     )
 `, function(error, results, fields) {
@@ -76,8 +70,7 @@ connection.query(`
 // Friend requests table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS friend_requests (
-        sender VARCHAR(255),
-        receiver VARCHAR(255)
+        sender VARCHAR(255), receiver VARCHAR(255)
     )
 `, function(error, results, fields) {
     if (error) {
@@ -88,12 +81,9 @@ connection.query(`
 // Rooms table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS rooms (
-        player1_socket_id VARCHAR(255),
-        player1_username VARCHAR(255),
-        player2_socket_id VARCHAR(255),
-        player2_username VARCHAR(255),
-        full BOOLEAN,
-        room_id VARCHAR(255)
+        player1_socket_id VARCHAR(255), player1_username VARCHAR(255),
+        player2_socket_id VARCHAR(255), player2_username VARCHAR(255),
+        full BOOLEAN, room_id VARCHAR(255)
     )
 `, function(error, results, fields) {
     if (error) {
