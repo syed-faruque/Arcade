@@ -1,44 +1,42 @@
 /**
- * @author Syed Faruque
+ * author: Syed Faruque
  * created: May 20 2024
 **/
 
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const useAuth = (socket) => {
+  const [username, setUsername] = useState("");
+  const navigate = useNavigate();
 
-    const [username, setUsername] = useState("");
-    const navigate = useNavigate();
+  useEffect(() => {
+    if (!socket) return;
 
-    useEffect(() => {
-        if (!socket) return;
+    const token = localStorage.getItem("token");
+    const data = { token: token };
+    
+    socket.emit("verify_token", data);
+    socket.emit("find_statuses");
+    socket.on("verification_status", (data) => {
+      if (!data.success) {
+        navigate("/");
+      }
+      setUsername(data.username);
+    });
 
-        const token = localStorage.getItem("token");
-        const data = {token: token};
-        socket.emit("verify_token", data)
-        socket.emit("find_statuses");
-        socket.on("verification_status", (data) => {
-            if (!data.success){
-                navigate("/");
-            }
-            setUsername(data.username);
-        })
+    socket.on("logout", () => {
+      localStorage.removeItem("token");
+      navigate("/");
+    });
 
-        socket.on("logout", () => {
-            localStorage.removeItem("token");
-            navigate("/");
-        })
+    return () => {
+      socket.off("verification_status");
+      socket.off("logout");
+    };
+  }, [socket, navigate]);
 
-        return(() => {
-            socket.off("verification_status");
-            socket.off("logout");
-        })
-
-    }, [socket]);
-
-    return username;
-
-}
+  return username;
+};
 
 export default useAuth;
