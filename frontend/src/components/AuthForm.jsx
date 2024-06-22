@@ -16,24 +16,17 @@ const AuthForm = ({ type, data, error, handleChange, handleSubmit }) => {
         </h1>
         <form onSubmit={handleSubmit} className='space-y-6'>
           <input
-            type='text'
-            name='username'
-            placeholder={type === 'login' ? 'Username' : 'Create username'}
-            onChange={handleChange}
-            value={data.username}
+            type='text' name='username'
+            placeholder={type === 'login' ? 'Username' : 'Create username'} onChange={handleChange} value={data.username}
             className='w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
           />
           <input
-            type='password'
-            name='password'
-            placeholder={type === 'login' ? 'Password' : 'Create password'}
-            onChange={handleChange}
-            value={data.password}
+            type='password' name='password'
+            placeholder={type === 'login' ? 'Password' : 'Create password'} onChange={handleChange} value={data.password}
             className='w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500'
           />
           <input
-            type='submit'
-            value={type === 'login' ? 'LOGIN' : 'CREATE ACCOUNT'}
+            type='submit' value={type === 'login' ? 'LOGIN' : 'CREATE ACCOUNT'}
             className='w-full px-4 py-2 bg-blue-500 text-white font-bold rounded hover:bg-blue-600 transition duration-200'
           />
           {type === 'login' ? (
