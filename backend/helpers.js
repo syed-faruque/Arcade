@@ -93,13 +93,12 @@ const helpers = (io) => {
                 },
 
                 // changes a specific user's online status
-                updateUserOnlineStatus: function(username, status, callback) {
+                updateUserOnlineStatus: function(username, status) {
                         connection.query("UPDATE accounts SET online_status = ? WHERE username = ?", [status, username], (error, results) => {
                                 if (error) {
                                         console.log("Error updating accounts: "+error);
                                         return;
                                 }
-                                callback();
                         });
                 },
 
