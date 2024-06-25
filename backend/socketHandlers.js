@@ -199,23 +199,14 @@ module.exports = (io) => {
 
                 //accept request event handler
                 socket.on("accept_request", (data) => {
-                    
                         helperFunctions.removeFriendRequest(data.requester, socket.username);
-                    
                         helperFunctions.insertFriendPairing(socket.username, data.requester);
-                    
                         helperFunctions.insertFriendPairing(data.requester, socket.username);
-                    
                         helperFunctions.updateUserSearch(data.requester);
-                    
                         helperFunctions.updateUserSearch(socket.username);
-                    
                         helperFunctions.fetchAndEmitUserFriendRequests(socket.username);   
-                    
                         helperFunctions.fetchAndEmitUserStatuses(socket.username);
-                    
                         helperFunctions.fetchAndEmitUserStatuses(data.requester);
-                    
                 })
 
                 //reject request event handler
