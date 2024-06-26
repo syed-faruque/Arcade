@@ -23,9 +23,3 @@ const useInvitations = (username, socket) => {
 
   return invites;
 };
-
-<<<<<<< HEAD
-export default useInvitations;
-=======
-export default useInvitations;
->>>>>>> d6cc1e333d1a26ae0591384fbd41a72d976c93b3
