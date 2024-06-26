@@ -6,7 +6,7 @@
 //~~~~~~~~~~~~~~~ seperate functions for repeated usage in socketHandlers.js ~~~~~~~~~~~~~~~//
 
 // database import
-const connection = require('./dbSetup');
+const connection = require('./database');
 
 // helper functions
 const helpers = (io) => {

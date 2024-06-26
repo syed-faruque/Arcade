@@ -1,21 +1,26 @@
+/**
+ * author: Syed Faruque
+ * created: June 18 2024
+**/
+
 import { useEffect, useState } from "react";
 
 const useDisconnection = (socket) => {
-    const [disconnect, setDisconnect] = useState(false);
+  const [disconnect, setDisconnect] = useState(false);
 
-    useEffect(() => {
-        if (!socket) return;
+  useEffect(() => {
+    if (!socket) return;
 
-        socket.on("disconnection", () => {
-            setDisconnect(true);
-        });
+    socket.on("disconnection", () => {
+      setDisconnect(true);
+    });
 
-        return () => {
-            socket.off("disconnection");
-        };
-    }, [socket]);
+    return () => {
+      socket.off("disconnection");
+    };
+  }, [socket]);
 
-    return disconnect;
+  return disconnect;
 };
 
 export default useDisconnection;

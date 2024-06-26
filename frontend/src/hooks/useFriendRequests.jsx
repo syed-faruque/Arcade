@@ -1,23 +1,27 @@
+/**
+ * author: Syed Faruque
+ * created: June 7 2024
+**/
+
 import { useState, useEffect } from "react";
 
 const useFriendRequests = (username, socket) => {
-    const [requesters, setRequesters] = useState([]);
-    const username = useAuth(socket);
+  const [requesters, setRequesters] = useState([]);
 
-    useEffect(() => {
-        if (!socket || !username) return;
-        
-        socket.emit("find_requests");
-        socket.on("find_requests", (data) => {
-            setRequesters(data.requesters);
-        })
+  useEffect(() => {
+    if (!socket || !username) return;
+    
+    socket.emit("find_requests");
+    socket.on("find_requests", (data) => {
+      setRequesters(data.requesters);
+    });
 
-        return () => {
-            socket.off("find_requests");
-        };
-    }, [socket, username]);
+    return () => {
+      socket.off("find_requests");
+    };
+  }, [socket, username]);
 
-    return requesters;
-}
+  return requesters;
+};
 
 export default useFriendRequests;

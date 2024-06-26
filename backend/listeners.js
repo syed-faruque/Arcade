@@ -8,7 +8,7 @@
 //library imports
 const jwt = require("jsonwebtoken");
 const uuid = require("uuid").v4;
-const connection = require('./dbSetup');
+const connection = require('./database');
 
 //helper functions import
 const helpers = require('./helpers');
@@ -51,10 +51,9 @@ module.exports = (io) => {
                                 if (results.length > 0) {
                                         const username = results[0].username;
                                         const token = jwt.sign({username: username}, process.env.TOKEN_SECRET);
-                                        helperFunctions.updateUserOnlineStatus(username, true, () => {
-                                                helperFunctions.insertSocketMapping(username, socket.id);
-                                                socket.emit("login_results", {success: true, token: token});
-                                        })
+                                        helperFunctions.updateUserOnlineStatus(username, true);
+                                        helperFunctions.insertSocketMapping(username, socket.id);
+                                        socket.emit("login_results", {success: true, token: token});
                                 }
                                 else {
                                         socket.emit("login_results", {success: false});
@@ -63,7 +62,7 @@ module.exports = (io) => {
                 })
     
                 //find user statuses event handler
-                socket.on("find_statuses", async () => {
+                socket.on("find_statuses", () => {
                         helperFunctions.fetchAndEmitUserStatuses(socket.username);
                         helperFunctions.updateUserStatusesToFriends(socket.username);
                 })
@@ -200,23 +199,14 @@ module.exports = (io) => {
 
                 //accept request event handler
                 socket.on("accept_request", (data) => {
-                    
                         helperFunctions.removeFriendRequest(data.requester, socket.username);
-                    
                         helperFunctions.insertFriendPairing(socket.username, data.requester);
-                    
                         helperFunctions.insertFriendPairing(data.requester, socket.username);
-                    
                         helperFunctions.updateUserSearch(data.requester);
-                    
                         helperFunctions.updateUserSearch(socket.username);
-                    
                         helperFunctions.fetchAndEmitUserFriendRequests(socket.username);   
-                    
                         helperFunctions.fetchAndEmitUserStatuses(socket.username);
-                    
                         helperFunctions.fetchAndEmitUserStatuses(data.requester);
-                    
                 })
 
                 //reject request event handler
@@ -270,11 +260,10 @@ module.exports = (io) => {
                                                 console.log("Error deleting from socket_connections table: "+error);
                                                 return;
                                         }
-                                        helperFunctions.updateUserOnlineStatus(socket.username, false, () => {
-                                                helperFunctions.updateUserStatusesToFriends(socket.username);
-                                                helperFunctions.removeAllUserInvitesAndUpdate(socket.username);
-                                                helperFunctions.handleRoomsOnSystemDisconnect(socket.username);
-                                        })
+                                        helperFunctions.updateUserOnlineStatus(socket.username, false);
+                                        helperFunctions.updateUserStatusesToFriends(socket.username);
+                                        helperFunctions.removeAllUserInvitesAndUpdate(socket.username);
+                                        helperFunctions.handleRoomsOnSystemDisconnect(socket.username);
                                 })
                         })
                 })
