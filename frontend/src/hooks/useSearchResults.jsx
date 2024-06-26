@@ -29,6 +29,12 @@ const useSearchResults = (username, search, socket) => {
       socket.off("search");
     };
   }, [socket, search, username]);
+<<<<<<< HEAD
+
+  return { friends, nonfriends, requested };
+};
+=======
+>>>>>>> d6cc1e333d1a26ae0591384fbd41a72d976c93b3
 
   return { friends, nonfriends, requested };
 };

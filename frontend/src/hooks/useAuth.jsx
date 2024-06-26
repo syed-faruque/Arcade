@@ -39,4 +39,8 @@ const useAuth = (socket) => {
   return username;
 };
 
+<<<<<<< HEAD
 export default useAuth;
+=======
+export default useAuth;
+>>>>>>> d6cc1e333d1a26ae0591384fbd41a72d976c93b3
