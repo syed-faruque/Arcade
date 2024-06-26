@@ -14,11 +14,11 @@ const app = express();
 const server = http.createServer(app);
 const socketIO = io(server, {cors: {origin: "http://localhost:5173", methods: ["GET", "POST"]}});
 
-//socketHandlers import
-const socketHandlers = require('./socketHandlers');
+//socket event handlers import
+const listeners = require('./listeners');
 
 //socket event handlers
-socketHandlers(socketIO);
+listeners(socketIO);
 
 //makes server listen on designated port
 server.listen(process.env.PORT, () => {
