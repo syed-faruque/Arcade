@@ -51,7 +51,7 @@ module.exports = (io) => {
                                 if (results.length > 0) {
                                         const username = results[0].username;
                                         const token = jwt.sign({username: username}, process.env.TOKEN_SECRET);
-                                        helperFunctions.updateUserOnlineStatus(username, true);
+                                        helperFunctions.updateUserOnlineStatus(username, true, () => {return});
                                         helperFunctions.insertSocketMapping(username, socket.id);
                                         socket.emit("login_results", {success: true, token: token});
                                 }
@@ -260,7 +260,7 @@ module.exports = (io) => {
                                                 console.log("Error deleting from socket_connections table: "+error);
                                                 return;
                                         }
-                                        helperFunctions.updateUserOnlineStatus(socket.username, false);
+                                        helperFunctions.updateUserOnlineStatus(socket.username, false, () => {return});
                                         helperFunctions.updateUserStatusesToFriends(socket.username);
                                         helperFunctions.removeAllUserInvitesAndUpdate(socket.username);
                                         helperFunctions.handleRoomsOnSystemDisconnect(socket.username);
