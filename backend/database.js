@@ -3,11 +3,11 @@
  * created: May 20 2024
 **/
 
-// Library imports
+// library imports
 const sql = require("mysql2");
 require('dotenv').config();
 
-// Database connection
+// database connection
 const connection = sql.createConnection({
     host: process.env.DATABASE_HOST, user: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD, database: process.env.DATABASE_NAME
@@ -21,7 +21,7 @@ connection.connect(function(err) {
     console.log("Database connection established");
 });
 
-// Accounts table setup
+// accounts table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS accounts (
         username VARCHAR(255), password VARCHAR(255), 
@@ -33,7 +33,7 @@ connection.query(`
     }
 });
 
-// Socket_connections table setup
+// socket_connections table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS socket_connections (
         username VARCHAR(255), socket_id VARCHAR(255)
@@ -44,7 +44,7 @@ connection.query(`
     }
 });
 
-// Friends table setup
+// friends table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS friends (
         user VARCHAR(255), friend VARCHAR(255)
@@ -55,7 +55,7 @@ connection.query(`
     }
 });
 
-// Invites table setup
+// invites table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS invites (
         inviter VARCHAR(255), invited VARCHAR(255),
@@ -67,7 +67,7 @@ connection.query(`
     }
 });
 
-// Friend requests table setup
+// friend requests table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS friend_requests (
         sender VARCHAR(255), receiver VARCHAR(255)
@@ -78,7 +78,7 @@ connection.query(`
     }
 });
 
-// Rooms table setup
+// rooms table setup
 connection.query(`
     CREATE TABLE IF NOT EXISTS rooms (
         player1_socket_id VARCHAR(255), player1_username VARCHAR(255),
