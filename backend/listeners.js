@@ -108,6 +108,7 @@ module.exports = (io) => {
                                 connection.query("SELECT * FROM invites WHERE room_id = ?", [data.room_id], (error, invite_results) => {
                                         if (error) {
                                                 console.log("Error selecting from invites table: "+error);
+                                                return;
                                         }
                     
                                         if (invite_results.length > 0) {
