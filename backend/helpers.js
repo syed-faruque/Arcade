@@ -268,6 +268,7 @@ const helpers = (io) => {
                                 connection.query("DELETE from invites WHERE inviter = ?", [inviter], (error, results) => {
                                         if (error) {
                                                 console.log("Error deleting from invites table: "+error);
+                                                return;
                                         }
                                         invited_users.forEach(invited_user => {
                                                 this.fetchAndEmitUserInvites(invited_user);
@@ -281,6 +282,7 @@ const helpers = (io) => {
                         connection.query("DELETE FROM rooms WHERE room_id = ?", [room_id], (error, results) => {
                                 if (error) {
                                         console.log("Error deleting from rooms: "+error);
+                                        return;
                                 }
                         })
                 },
@@ -290,6 +292,7 @@ const helpers = (io) => {
                         connection.query("SELECT * FROM rooms WHERE player1_socket_id = ? OR player2_socket_id = ?", [player_socket_id, player_socket_id], (error, results) => {
                                 if (error) {
                                         console.log("Error selecting from rooms: "+error);
+                                        return;
                                 }
                                 callback(results[0]);
                         })
@@ -322,6 +325,7 @@ const helpers = (io) => {
                         connection.query("SELECT * FROM rooms WHERE player1_username = ? OR player2_username = ?", [player, player], (error, results) => {
                                 if (error) {
                                         console.log("Error selecting from rooms table: "+error);
+                                        return;
                                 }
                                 results.forEach(room => {
                                         if (!room.full){
