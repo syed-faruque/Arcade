@@ -22,5 +22,5 @@ listeners(socketIO);
 
 //makes server listen on designated port
 server.listen(process.env.PORT, () => {
-        console.log("Server running");
+    console.log("Server running");
 });
